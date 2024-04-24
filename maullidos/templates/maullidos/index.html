@@ -1,0 +1,46 @@
+{% extends "maullidos/base.html" %}  
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="content-header">
+    <div></div> 
+    <div class="nuevo-maullido-container">
+       
+    </div>
+</div>
+{% endif %}
+<div style="display: flex;">
+    <div>
+        {% if user.is_authenticated %}
+        <div style="text-align: center; padding:2vh;">
+            <h2>Maullidos de {{ user.username }}</h2>
+            <span class="publicar-nuevo-maullido"> <a href="{% url 'maullido-create' %}" class="nuevo-maullido-link">+ Publicar Nuevo Maullido</a></span>
+        </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Maullido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for maullido in maullidos %}
+                    <tr>
+                        <td>{{ maullido.fecha_creacion }}</td>
+                        <td>{{ maullido.contenido }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2">No hay maullidos aún.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div style="text-align: center;">
+                <a href="{% url 'login' %}">Login</a> | <a href="{% url 'registro' %}">Registro</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "maullidos/base.html" %}
+
+{% block content %}
+<div class="form-box-maullidos" style="width:30%">
+    <h2 style="color: orange; text-align: center;">Publicar Maullido</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}" style="color:gray">Maúlla, a cambio te mandamos una lata de atún...</label>
+            {{ field }}
+            
+            
+           
+            {% for error in field.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+        </div>
+        {% endfor %}
+        <small style="display: block; color:gray">{{ field.help_text }}máx 140 caracteres.</small>
+        <div style="padding-left:40%">
+        <button type="submit" >Publicar</button>
+        </div>
+    </form>
+    
+</div>
+{% endblock %}
+

@@ -1,0 +1,277 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Gateter{% endblock %}</title>
+ 
+
+    <style>
+        .header-right {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        body {
+            font-family: Arial, sans-serif; 
+        }
+
+        nav {
+            background-color: #333; 
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none; 
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            float: right; 
+            padding-left: 5vh;
+        }
+
+        nav ul li a {
+            display: block; 
+            color: white; 
+            text-align: center;
+            padding: 14px 16px; 
+            text-decoration: none; 
+        }
+
+        nav ul li a:hover {
+            background-color: #555; 
+        }
+        input {
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #cccccc; 
+            border-radius: 4px;
+            width: 80%;
+            
+        }
+        .header-right {
+            float: right;
+            padding: 14px 16px;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; 
+        }
+
+        .container {
+            width: 100%; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            padding: 10px;
+            min-height: 25vh; 
+        }
+
+        .form-box {
+            background-color: #ffffff; 
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+            border-radius: 8px; 
+            width: 300px; 
+        }
+        .form-box-registro {
+            background-color: #ffffff; 
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+            border-radius: 8px; 
+            width: 80vh; 
+            height: 30%%;
+        }
+        .form-box-maullidos {
+            background-color: #ffffff; 
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+            border-radius: 8px; 
+            width: 60%; 
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #cccccc; 
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer; 
+            border: none; 
+            width: 33%;
+        }
+
+        button:hover {
+            background-color: #45a049; 
+        }
+        table {
+            width: 100%; /* Ocupa el ancho completo del contenedor */
+            border-collapse: collapse; /* Elimina los espacios entre los bordes de las celdas */
+            margin-top: 20px; /* Espacio sobre la tabla */
+        }
+        
+        th, td {
+            border: 1px solid #cccccc; /* Bordes gris claros */
+            padding: 8px; /* Espaciado dentro de las celdas */
+            text-align: left; /* Alineación del texto */
+        }
+        
+        th {
+            background-color: #4CAF50; /* Color verde para los encabezados */
+            color: white; /* Texto blanco para los encabezados */
+        }
+        
+        tr:nth-child(odd) {
+            background-color: #f2f2f2; /* Filas impares con fondo gris */
+        }
+        
+        tr:nth-child(even) {
+            background-color: #ffffff; /* Filas pares con fondo blanco */
+        }
+        
+        tr:hover {
+            background-color: #ddd; /* Cambio de fondo al pasar el mouse */
+        }
+        
+        .content-header {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px 20px;
+            background-color: #f0f0f0; 
+        }
+        
+        .publicar-nuevo-maullido {
+
+            background-color: #8fbc8f; 
+            padding: 10px;
+            border-radius: 5px; 
+        }
+        
+        .publicar-nuevo-maullido a {
+            color: white; 
+            text-decoration: none;
+        }
+        ul, ol {
+            list-style-type: none;
+        }
+        footer {
+            background-color: #333; 
+            color: white; 
+            text-align: center; 
+            padding: 10px; 
+            position: absolute; 
+            bottom: 0; 
+            width: 100%; 
+        }
+        
+
+    </style>
+    <script>
+        function toggleUsuarios() {
+            var usuariosContainer = document.getElementById("usuarios-container");
+            if (usuariosContainer.style.display === "none" || !usuariosContainer.style.display) {
+                usuariosContainer.style.display = "block";
+            } else {
+                usuariosContainer.style.display = "none";
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    <header>
+        <h1><span>
+            <svg height="4vh" width="4vh" fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>cat</title> <path d="M28.926 1.17l-2.182 3.608c-1.876-0.608-4.669-0.489-6.426 0l-2.102-3.557c-3.452 6.448-2.475 10.523 0.159 12.549-0.403 0.252-0.818 0.529-1.247 0.833-10.979-8.759-20.863 1.106-14.379 9.92h0.050c1.163 1.687 2.503 2.731 3.95 3.277 2.050 0.773 4.159 0.551 6.236 0.257s4.109-0.663 6.046-0.525c1.937 0.138 3.874 0.635 5.647 2.569 1.209 1.318 2.926-0.101 1.486-1.507-2.185-2.134-4.525-2.959-6.825-3.122s-4.505 0.293-6.502 0.576c-1.997 0.283-3.761 0.409-5.276-0.163-0.711-0.268-1.403-0.69-2.070-1.36h22.51c1.064-3.756 1.177-7.73-0.033-10.237 3.635-1.897 5.097-6.376 0.958-13.116zM22.176 10.872c-2.316 1.117-3.367 0.212-3.817-1.656 2.273-1.41 3.626-0.278 3.817 1.656zM25.067 10.872c0.191-1.934 1.544-3.067 3.817-1.656-0.45 1.868-1.502 2.774-3.817 1.656z"></path> </g></svg>
+            <span>Gateter 
+        </span></h1>
+
+        <div class="header-right">
+            {% if user.is_authenticated %}
+                <p>Miaaaau, {{ user.username }}</p>
+            {% else %}
+                <p>Hola, Gatito!</p>
+            {% endif %}
+        </div>
+        <nav>
+            
+            <ul>
+                {% if user.is_authenticated %}
+                <li><a href="/logout/">Logout</a></li>
+                {% else  %} 
+                <li><a href="/login/">Login</a></li>
+                <li><a href="/registro/">Registro</a></li>
+                {% endif %}
+                
+                <li><a href="/contacto/">Contacto</a></li>
+                <li><a href="{% url 'readme' %}">README.MD</a></li>
+
+                {% if user.is_authenticated %}
+                {% if not hide_extra_nav %}
+                <li><a href="#" onclick="toggleUsuarios()">Más Maullidos de Otros Gatitos</a></li>
+            {% endif %}
+                    
+                    <li><a href="{% url 'maullido-create' %}">Nuevo Maullido</a></li>
+                    
+                {% endif %}
+
+                <li><a href="/">Inicio</a></li>
+                
+                
+                
+                
+            </ul>
+        </nav>
+        <div id="usuarios-container" style="display: none; background-color: black; color: white;">
+            <ul class="usuarios-list">
+                {% for usuario in usuarios_lista %}
+                <li>
+                    
+                    <a href="{% url 'user-maullidos' username=usuario.username %}" style="color: white; font-size: 3vh">
+                        {{ usuario.username }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        
+    </header>
+
+    <main>
+        <div class="container">
+        {% block content %}
+        <div class="header-right">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a> | <a href="{% url 'registro' %}">Registro</a>
+            {% endif %}
+        </div>
+   
+        <p>Maulla, pero no arañes!</p>
+        {% endblock %}
+    </div>
+    </main>
+
+    <footer>
+        {% block footer %}
+        <p>Derechos reservados © 2024 Areneros Para Gatos Reunidos -- APGR --.</p>
+        {% endblock %}
+    </footer>
+</body>
+</html>
